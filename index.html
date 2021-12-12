@@ -1,119 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>german-leaf-quiz</title>
-  <meta charset="utf-8"/>
-  <style>a{text-decoration:none;}</style>
-</head>
-
-<body>
-<h1>Laubbaum bestimmen</h1>
-<div style="line-height:25px;">
-<div id="richtig"></div><div id="falsch"></div>
-<table width="600px">
-<tr><td><a id="l1" href="javascript:NewImage(0)"></a></td><td><a id="l2"  href="javascript:NewImage(1)"></a></td></tr>
-<tr><td><a id="l3" href="javascript:NewImage(2)"></a></td><td><a id="l4"  href="javascript:NewImage(3)"></a></td></tr>
-<tr><td><a id="l5" href="javascript:NewImage(4)"></a></td><td><a id="l6"  href="javascript:NewImage(5)"></a></td></tr>
-<tr><td><a id="l7" href="javascript:NewImage(6)"></a></td><td><a id="l8"  href="javascript:NewImage(7)"></a></td></tr>
-</table>
-<div id="image" style="height:500px;width: 809px;  box-shadow: inset 0px 0px 40px rgba(0,0,0,1);background-size: 809px;"></div>
-</div>
-<h2>Auswahl der Blätter</h2>
-<p>Es befinden sich nur Blätter von Laubbäumen in der Auswahl. Dabei mag es verwundern, warum z. B. die Haselnuss als Baum gezählt wird. Oft sind die Grenzen zwischen B&auml;umen und Str&auml;uchern und ihren Ansammlungen flie&beta;end, zumal sich die Natur erfreulicherweise in kein Schema pressen l&auml;sst und sich unserem Katalogisierungsstreben entzieht. Lorbeer, Haselnuss, Flieder, Holunder, Magnolie und viele andere gibt es als Str&auml;ucher mit mehreren St&auml;mmchen und als B&auml;ume mit einem Hauptstamm. Man hat es also mit strauchartigen B&auml;umen beziehungsweise baumartigen Str&auml;uchern zu tun. Und es wird nie jemandem gelingen, die weltweit vorkommenden ann&auml;hernd 15 000 verschiedenen Arten von baumf&ouml;rmigen Geh&ouml;lzen exakt in B&auml;ume und Str&auml;ucher unterteilen zu k&ouml;nnen.</p>
-<p>Zusätzlich sind nur Laubbäume hier, die nat&uuml;rlicherweise in Deutschland vorkommen und nicht erst innerhalb des letzten Jahrtausends angepflanzt wurden wie die Robinie, Spitzeiche und Rotahorn. Der Walnussbaum, welcher von den Römern vor zwei Jahrtausenden den Germanen anvertraut wurde, bildet hier so etwas wie eine zeitliche Grenze.</p>
-<h2>Hybride</h2>
-<p>Die drei heimischen Weissdorne und die zwei heimischen Linden verdienen eigentlich eine genaue Auflistung  - wie die drei heimischen Eichen. Jedoch ist die Unterscheidung zwischen ihren Hybriden oft schwer.</p>
-<p>Bei Holzapfel und Eberesche sind häufig absichtlich die Früchte mit im Bild, damit es eindeutiger wird und bei Eichen wurden nur klar zuweisbare Bäume abgelichtet.</p>
-<!--<h3>Essbarkeit und Giftigkeit</h3>
-<p>Linden, Ahorn, junge Birken und Buchen sind auch in hohen Mengen gesundes Blattgem&uuml;se. Ist die vollständige Frucht wie bei Hollunder und Stechpalme giftig, ist das Blatt giftig. Betonung liegt auf vollständig. Bei Eibenbeeren ist z. B. nur der Mantel ungiftig. Eine Beere alleine t&ouml;tet einen gesunden Menschen nie. Vogelbeeren sind übrigens nicht giftig.</p>-->
-<hr>
-<center>
-  <small><a href="https://github.com/772/german-leaf-quiz">Fork on GitHub</a></small>
-</center>
-
-<script>
-var leafs =[
-5,    "Bergahorn",                  "Seifenbaumgewaechse/Ahorne/",
-4,    "Spitzahorn",                 "Seifenbaumgewaechse/Ahorne/",
-1,    "Feldahorn",                  "Seifenbaumgewaechse/Ahorne/",
-1,    "Haenge-Birke",               "Birkengewaechse/Birken/Haenge-Birke | Silberbirke | Trauerbirke",
-//0,    "Moorbirke",                "Birkengewaechse/Birken/ | Flaumbirke | Haarbirke",
-3,    "Schwarzerle",                "Birkengewaechse/Erlen/",
-//0,    "Grau-Erle",                "Birkengewaechse/Erlen/",
-5,    "Haselnuss",                  "Birkengewaechse/Haselnussgewaechse/",
-5,    "Hainbuche",                  "Birkengewaechse/Haselnussgewaechse/ | Weissbuche",
-4,    "Flaumeiche",                 "Buchengewaechse/Eichen/",
-5,    "Deutsche Eiche",             "Buchengewaechse/Eichen/ | Stieleiche",
-2,    "Traubeneiche",               "Buchengewaechse/Eichen/",
-4,    "Rotbuche",                   "Buchengewaechse/ | Buche",
-//0,    "Edelkastanie",             "Buchengewaechse/ | Esskastanie",
-7,    "Schwarzpappel",              "Weidengewaechse/Pappeln/",
-5,    "Silberpappel",             "Weidengewaechse/Pappeln/",
-5,    "Zitterpappel",             "Weidengewaechse/Pappeln/",
-9,    "Silber-Weide",               "Weidengewaechse/Weiden/",
-2,    "Sal-Weide",                  "Weidengewaechse/Weiden/",
-4,    "Korb-Weide",                 "Weidengewaechse/Weiden/",
-//0,    "Berg-Ulme",                "Ulmengewaechse/",
-3,    "Flatter-Ulme",             "Ulmengewaechse/",
-2,    "Linde",                      "Lindengewaechse/",
-4,    "Schwarzer Holunder",         "Moschuskrautgewaechse/",
-2,    "Gemeine Esche",              "Oelbaumgewaechse/",
-8,    "Europaeische Stechpalme",    "Stechpalmengewaechse/",
-2,    "Vogelbeere",                 "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Eberesche",
-5,    "Elsbeere",                 "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Elsbeerbaum",
-//0,    "Speierling",               "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/",
-//0,    "Echte Mehlbeere",          "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/",
-1,    "Schwedische Mehlbeere",      "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Oxelbeere",
-8,    "Weissdorn",                  "Rosengewaechse/Kernobst/Weissdorne/",
-1,    "Mispel",                     "Rosengewaechse/Kernobst/",
-4,    "Vogel-Kirsche",              "Rosengewaechse/Steinobst/ | Vogelkirsche",
-1,    "Holzapfel",                  "Rosengewaechse/Steinobst/ | Europaeischer Wildapfel",
-6,    "Wildbirne",                "Rosengewaechse/Steinobst/ | Holzbirne",
-4,    "Walnuss",                    "Walnussgewaechse/ | Echte Walnuss | Walnussbaum"];
-var min = 0;
-var max = leafs.length / 3 - 1;
-var points = 0;
-var x;
-function NewImage(inti)
-{
-  if (x == inti)
-  {
-    points++;
-    if (points == 1)
-      document.getElementById('richtig').innerHTML = points + " richtige Antwort! Es war ein(e) " + leafs[x * 3 + 1] + ".";
-    else
-      document.getElementById('richtig').innerHTML = points + " richtige Antworten! Es war ein(e) " + leafs[x * 3 + 1] + ".";
-    document.getElementById('falsch').innerHTML = "";
-  }
-  else
-  {
-    points = 0;
-    document.getElementById('richtig').innerHTML = "";
-    if (inti > 0)
-      document.getElementById('falsch').innerHTML = "Nicht richtig, es war ein(e) " + leafs[x * 3 + 1] + ".";
-  }
-  x = Math.round(Math.random() * (max - min)) + min;
-  image_src = "leafs/" + leafs[x * 3 + 1] + "/" + String(Math.round(Math.random() * (leafs[x * 3] - 1)) + 1).padStart(3, "0") + ".jpg";
-  document.getElementById("image").style.backgroundImage = "url('" + image_src + "')";
-  var btn_correct = Math.round(Math.random() * (8 - 1)) + 1;
-  var rnd1 = GetRandomNumber(btn_correct, 1, x); document.getElementById('l1').innerHTML = leafs[rnd1 * 3 + 1]; document.getElementById("l1").href= "javascript:NewImage(" + rnd1 + ")";
-  var rnd2 = GetRandomNumber(btn_correct, 2, x, rnd1); document.getElementById('l2').innerHTML = leafs[rnd2 * 3 + 1]; document.getElementById("l2").href= "javascript:NewImage(" + rnd2 + ")";
-  var rnd3 = GetRandomNumber(btn_correct, 3, x, rnd1, rnd2); document.getElementById('l3').innerHTML = leafs[rnd3 * 3 + 1]; document.getElementById("l3").href= "javascript:NewImage(" + rnd3 + ")";
-  var rnd4 = GetRandomNumber(btn_correct, 4, x, rnd1, rnd2, rnd3); document.getElementById('l4').innerHTML = leafs[rnd4 * 3 + 1]; document.getElementById("l4").href= "javascript:NewImage(" + rnd4 + ")";
-  var rnd5 = GetRandomNumber(btn_correct, 5, x, rnd1, rnd2, rnd3, rnd4); document.getElementById('l5').innerHTML = leafs[rnd5 * 3 + 1]; document.getElementById("l5").href= "javascript:NewImage(" + rnd5 + ")";
-  var rnd6 = GetRandomNumber(btn_correct, 6, x, rnd1, rnd2, rnd3, rnd4, rnd5); document.getElementById('l6').innerHTML = leafs[rnd6 * 3 + 1]; document.getElementById("l6").href= "javascript:NewImage(" + rnd6 + ")";
-  var rnd7 = GetRandomNumber(btn_correct, 7, x, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6); document.getElementById('l7').innerHTML = leafs[rnd7 * 3 + 1]; document.getElementById("l7").href= "javascript:NewImage(" + rnd7 + ")";
-  var rnd8 = GetRandomNumber(btn_correct, 8, x, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6, rnd7); document.getElementById('l8').innerHTML = leafs[rnd8 * 3 + 1]; document.getElementById("l8").href= "javascript:NewImage(" + rnd8 + ")";
-}
-function GetRandomNumber(btn_correct, btn_num, answer, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6, rnd7)
-{
-  if (btn_correct == btn_num)
-    return answer;
-  var x = Math.round(Math.random() * (max - btn_num - min)) + min;
-  while (x == rnd1 || x == rnd2 || x == rnd3 || x == rnd4 || x == rnd5 || x == rnd6 || x == rnd7 || x == answer) x++;
-  return x;
-}
-NewImage(0);
-</script>
-</body>
+   <head>
+      <title>german-leaf-quiz</title>
+      <meta charset="utf-8"/>
+      <style>a,#richtig,#falsch{color:#ffa;font-weight:bold;font-size:20px;}a{text-decoration:underline;}</style>
+   </head>
+   <body id="image" style="background: url(image.jpg) no-repeat;background-position: center top;background-size: 100% auto;">
+      <div style="line-height:25px;">
+         <table width="100%" style="table-layout:fixed;border-collapse: collapse;text-align:center;">
+            <b>
+               <tr style="background-color:black;background-color: hsla(50, 33%, 25%, 0.75);">
+                  <td><a id="l1" href="javascript:NewImage(0)"></a></td>
+                  <td><a id="l2"  href="javascript:NewImage(1)"></a></td>
+                  <td><a id="l3" href="javascript:NewImage(2)"></a></td>
+                  <td><a id="l4"  href="javascript:NewImage(3)"></a></td>
+                  <td><a id="l5" href="javascript:NewImage(4)"></a></td>
+                  <td><a id="l6"  href="javascript:NewImage(5)"></a></td>
+                  <td><a id="l7" href="javascript:NewImage(6)"></a></td>
+                  <td><a id="l8"  href="javascript:NewImage(7)"></a></td>
+               </tr>
+            </b>
+         </table>
+         <center>
+            <div id="richtig"></div>
+            <div id="falsch"></div>
+         </center>
+      </div>
+      <script>
+         var leafs =[
+         5,    "Bergahorn",                  "Seifenbaumgewaechse/Ahorne/",
+         4,    "Spitzahorn",                 "Seifenbaumgewaechse/Ahorne/",
+         1,    "Feldahorn",                  "Seifenbaumgewaechse/Ahorne/",
+         1,    "Haenge-Birke",               "Birkengewaechse/Birken/Haenge-Birke | Silberbirke | Trauerbirke",
+         //0,    "Moorbirke",                "Birkengewaechse/Birken/ | Flaumbirke | Haarbirke",
+         3,    "Schwarzerle",                "Birkengewaechse/Erlen/",
+         //0,    "Grau-Erle",                "Birkengewaechse/Erlen/",
+         5,    "Haselnuss",                  "Birkengewaechse/Haselnussgewaechse/",
+         5,    "Hainbuche",                  "Birkengewaechse/Haselnussgewaechse/ | Weissbuche",
+         4,    "Flaumeiche",                 "Buchengewaechse/Eichen/",
+         4,    "Deutsche Eiche",             "Buchengewaechse/Eichen/ | Stieleiche",
+         2,    "Traubeneiche",               "Buchengewaechse/Eichen/",
+         4,    "Rotbuche",                   "Buchengewaechse/ | Buche",
+         //0,    "Edelkastanie",             "Buchengewaechse/ | Esskastanie",
+         6,    "Schwarzpappel",              "Weidengewaechse/Pappeln/",
+         5,    "Silberpappel",               "Weidengewaechse/Pappeln/",
+         5,    "Zitterpappel",               "Weidengewaechse/Pappeln/",
+         9,    "Silber-Weide",               "Weidengewaechse/Weiden/",
+         2,    "Sal-Weide",                  "Weidengewaechse/Weiden/",
+         4,    "Korb-Weide",                 "Weidengewaechse/Weiden/",
+         //0,    "Berg-Ulme",                "Ulmengewaechse/",
+         3,    "Flatter-Ulme",               "Ulmengewaechse/",
+         2,    "Linde",                      "Lindengewaechse/",
+         4,    "Schwarzer Holunder",         "Moschuskrautgewaechse/",
+         2,    "Gemeine Esche",              "Oelbaumgewaechse/",
+         8,    "Europaeische Stechpalme",    "Stechpalmengewaechse/",
+         2,    "Vogelbeere",                 "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Eberesche",
+         5,    "Elsbeere",                   "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Elsbeerbaum",
+         //0,    "Speierling",               "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/",
+         //0,    "Echte Mehlbeere",          "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/",
+         1,    "Schwedische Mehlbeere",      "Rosengewaechse/Kernobst/Mehlbeeren und Ebereschen/ | Oxelbeere",
+         8,    "Weissdorn",                  "Rosengewaechse/Kernobst/Weissdorne/",
+         1,    "Mispel",                     "Rosengewaechse/Kernobst/",
+         4,    "Vogel-Kirsche",              "Rosengewaechse/Steinobst/ | Vogelkirsche",
+         1,    "Holzapfel",                  "Rosengewaechse/Steinobst/ | Europaeischer Wildapfel",
+         6,    "Wildbirne",                  "Rosengewaechse/Steinobst/ | Holzbirne",
+         4,    "Walnuss",                    "Walnussgewaechse/ | Echte Walnuss | Walnussbaum"];
+         var min = 0;
+         var max = leafs.length / 3 - 1;
+         var points = 0;
+         var x;
+         function NewImage(inti)
+         {
+           if (x == inti)
+           {
+             points++;
+             if (points == 1)
+               document.getElementById('richtig').innerHTML = points + " richtige Antwort! Es war ein(e) " + leafs[x * 3 + 1] + ".";
+             else
+               document.getElementById('richtig').innerHTML = points + " richtige Antworten! Es war ein(e) " + leafs[x * 3 + 1] + ".";
+             document.getElementById('falsch').innerHTML = "";
+           }
+           else
+           {
+             points = 0;
+             document.getElementById('richtig').innerHTML = "";
+             if (inti > 0)
+               document.getElementById('falsch').innerHTML = "Nicht richtig, es war ein(e) " + leafs[x * 3 + 1] + ".";
+           }
+           x = Math.round(Math.random() * (max - min)) + min;
+           image_src = "leafs/" + leafs[x * 3 + 1] + "/" + String(Math.round(Math.random() * (leafs[x * 3] - 1)) + 1).padStart(3, "0") + ".jpg";
+           document.getElementById("image").style.backgroundImage = "url('" + image_src + "')";
+           var btn_correct = Math.round(Math.random() * (8 - 1)) + 1;
+           var rnd1 = GetRandomNumber(btn_correct, 1, x); document.getElementById('l1').innerHTML = leafs[rnd1 * 3 + 1]; document.getElementById("l1").href= "javascript:NewImage(" + rnd1 + ")";
+           var rnd2 = GetRandomNumber(btn_correct, 2, x, rnd1); document.getElementById('l2').innerHTML = leafs[rnd2 * 3 + 1]; document.getElementById("l2").href= "javascript:NewImage(" + rnd2 + ")";
+           var rnd3 = GetRandomNumber(btn_correct, 3, x, rnd1, rnd2); document.getElementById('l3').innerHTML = leafs[rnd3 * 3 + 1]; document.getElementById("l3").href= "javascript:NewImage(" + rnd3 + ")";
+           var rnd4 = GetRandomNumber(btn_correct, 4, x, rnd1, rnd2, rnd3); document.getElementById('l4').innerHTML = leafs[rnd4 * 3 + 1]; document.getElementById("l4").href= "javascript:NewImage(" + rnd4 + ")";
+           var rnd5 = GetRandomNumber(btn_correct, 5, x, rnd1, rnd2, rnd3, rnd4); document.getElementById('l5').innerHTML = leafs[rnd5 * 3 + 1]; document.getElementById("l5").href= "javascript:NewImage(" + rnd5 + ")";
+           var rnd6 = GetRandomNumber(btn_correct, 6, x, rnd1, rnd2, rnd3, rnd4, rnd5); document.getElementById('l6').innerHTML = leafs[rnd6 * 3 + 1]; document.getElementById("l6").href= "javascript:NewImage(" + rnd6 + ")";
+           var rnd7 = GetRandomNumber(btn_correct, 7, x, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6); document.getElementById('l7').innerHTML = leafs[rnd7 * 3 + 1]; document.getElementById("l7").href= "javascript:NewImage(" + rnd7 + ")";
+           var rnd8 = GetRandomNumber(btn_correct, 8, x, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6, rnd7); document.getElementById('l8').innerHTML = leafs[rnd8 * 3 + 1]; document.getElementById("l8").href= "javascript:NewImage(" + rnd8 + ")";
+         }
+         function GetRandomNumber(btn_correct, btn_num, answer, rnd1, rnd2, rnd3, rnd4, rnd5, rnd6, rnd7)
+         {
+           if (btn_correct == btn_num)
+             return answer;
+           var x = Math.round(Math.random() * (max - btn_num - min)) + min;
+           while (x == rnd1 || x == rnd2 || x == rnd3 || x == rnd4 || x == rnd5 || x == rnd6 || x == rnd7 || x == answer) x++;
+           return x;
+         }
+         NewImage(0);
+      </script>
+   </body>
 </html>
