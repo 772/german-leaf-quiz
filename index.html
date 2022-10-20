@@ -27,6 +27,7 @@
          </center>
       </div>
       <script>
+         // TODO: Alternativnamen als Bildbeschreibung anzeigen.
          var leafs =[
          5,    "Bergahorn",                  "Seifenbaumgewaechse/Ahorne/",
          4,    "Spitzahorn",                 "Seifenbaumgewaechse/Ahorne/",
@@ -44,7 +45,7 @@
          //0,    "Edelkastanie",             "Buchengewaechse/ | Esskastanie",
          6,    "Schwarzpappel",              "Weidengewaechse/Pappeln/",
          5,    "Silberpappel",               "Weidengewaechse/Pappeln/",
-         5,    "Zitterpappel",               "Weidengewaechse/Pappeln/",
+         5,    "Zitterpappel",        "Weidengewaechse/Pappeln/", // Espe
          9,    "Silber-Weide",               "Weidengewaechse/Weiden/",
          2,    "Sal-Weide",                  "Weidengewaechse/Weiden/",
          4,    "Korb-Weide",                 "Weidengewaechse/Weiden/",
@@ -85,7 +86,7 @@
              points = 0;
              document.getElementById('richtig').innerHTML = "";
              if (inti > 0)
-               document.getElementById('falsch').innerHTML = "Nicht richtig, es war ein(e) " + leafs[x * 3 + 1] + ".";
+               document.getElementById('falsch').innerHTML = "Falsch, es war ein(e) " + leafs[x * 3 + 1] + ".";
            }
            x = Math.round(Math.random() * (max - min)) + min;
            image_src = "leafs/" + leafs[x * 3 + 1] + "/" + String(Math.round(Math.random() * (leafs[x * 3] - 1)) + 1).padStart(3, "0") + ".jpg";
