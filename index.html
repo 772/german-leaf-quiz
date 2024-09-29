@@ -3,31 +3,36 @@
    <head>
       <title>german-leaf-quiz</title>
       <meta charset="utf-8"/>
-      <style>a,#richtig,#falsch{color:#ffa;font-weight:bold;font-size:20px;}a{text-decoration:underline;}</style>
+      <style>a,#richtig,#falsch{color:#ffa;font-weight:bold;font-size:20px;}a{text-decoration:underline;}html{height:100%;}</style>
    </head>
-   <body id="image" style="background: url(image.jpg) no-repeat;background-position: center top;background-size: 100% auto;">
+   <body id="image" style="background: url(image.jpg) no-repeat;background-position: center;background-size: contain;">
       <div style="line-height:25px;">
-         <table width="100%" style="table-layout:fixed;border-collapse: collapse;text-align:center;">
+         <table width="50%" align="center" style="table-layout:fixed;height:160px;border-collapse: collapse;text-align:center;background-color:black;background-color: hsla(50, 33%, 25%, 0.75);border-radius:20px;">
             <b>
-               <tr style="background-color:black;background-color: hsla(50, 33%, 25%, 0.75);">
+               <tr>
                   <td><a id="l1" href="javascript:NewImage(0)"></a></td>
                   <td><a id="l2"  href="javascript:NewImage(1)"></a></td>
                   <td><a id="l3" href="javascript:NewImage(2)"></a></td>
                   <td><a id="l4"  href="javascript:NewImage(3)"></a></td>
+               </tr>
+               <tr>
                   <td><a id="l5" href="javascript:NewImage(4)"></a></td>
                   <td><a id="l6"  href="javascript:NewImage(5)"></a></td>
                   <td><a id="l7" href="javascript:NewImage(6)"></a></td>
                   <td><a id="l8"  href="javascript:NewImage(7)"></a></td>
                </tr>
+               <tr>
+		 <td colspan="4">
+		 <center>
+		    <div id="richtig"></div>
+		    <div id="falsch"></div>
+		 </center>
+                 </td>
+               </tr>
             </b>
          </table>
-         <center>
-            <div id="richtig"></div>
-            <div id="falsch"></div>
-         </center>
       </div>
       <script>
-         // TODO: Alternativnamen als Bildbeschreibung anzeigen.
          var leafs =[
          5,    "Bergahorn",                  "Seifenbaumgewaechse/Ahorne/",
          4,    "Spitzahorn",                 "Seifenbaumgewaechse/Ahorne/",
@@ -45,7 +50,7 @@
          //0,    "Edelkastanie",             "Buchengewaechse/ | Esskastanie",
          6,    "Schwarzpappel",              "Weidengewaechse/Pappeln/",
          5,    "Silberpappel",               "Weidengewaechse/Pappeln/",
-         5,    "Zitterpappel",        "Weidengewaechse/Pappeln/", // Espe
+         5,    "Zitterpappel",               "Weidengewaechse/Pappeln/",
          9,    "Silber-Weide",               "Weidengewaechse/Weiden/",
          2,    "Sal-Weide",                  "Weidengewaechse/Weiden/",
          4,    "Korb-Weide",                 "Weidengewaechse/Weiden/",
@@ -86,10 +91,11 @@
              points = 0;
              document.getElementById('richtig').innerHTML = "";
              if (inti > 0)
-               document.getElementById('falsch').innerHTML = "Falsch, es war ein(e) " + leafs[x * 3 + 1] + ".";
+               document.getElementById('falsch').innerHTML = "Nicht richtig, es war ein(e) " + leafs[x * 3 + 1] + ".";
            }
            x = Math.round(Math.random() * (max - min)) + min;
            image_src = "leafs/" + leafs[x * 3 + 1] + "/" + String(Math.round(Math.random() * (leafs[x * 3] - 1)) + 1).padStart(3, "0") + ".jpg";
+	   console.log(image_src);
            document.getElementById("image").style.backgroundImage = "url('" + image_src + "')";
            var btn_correct = Math.round(Math.random() * (8 - 1)) + 1;
            var rnd1 = GetRandomNumber(btn_correct, 1, x); document.getElementById('l1').innerHTML = leafs[rnd1 * 3 + 1]; document.getElementById("l1").href= "javascript:NewImage(" + rnd1 + ")";
